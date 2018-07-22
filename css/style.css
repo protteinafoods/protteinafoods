@@ -1,0 +1,386 @@
+@charset "UTF-8";
+/**
+  EDgrid es una librería CSS para construir layouts con Responsive Web Design
+  Importe este archivo en su proyecto para empezar a usarlo
+**/
+*,
+*:before,
+*:after {
+  box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: sans-serif; }
+
+img {
+  max-width: 100%;
+  height: auto; }
+
+a {
+  text-decoration: none; }
+  a:hover {
+    text-decoration: underline; }
+
+.ed-container, .sect, .main-header {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%; }
+
+.ed-item, .sect-item-full, .sect-item, .main-header-logo, .main-header-menu {
+  margin: 0;
+  padding-left: 0.9375em;
+  padding-right: 0.9375em; }
+
+.ed-item {
+  width: 100%; }
+  .ed-item.ed-container {
+    padding-left: 0;
+    padding-right: 0; }
+
+/*
+| Mixin para crear cuadriculas
+|
+| $selector: nombre del selector CSS de cada item de la cuadricula
+|
+| $gutter: separación entre cada item de la cuadricula (opcional)
+|
+*/
+.btn {
+  display: inline-block;
+  line-height: 2.5em;
+  padding: 0 1.5em;
+  cursor: pointer;
+  margin-bottom: 1em;
+  border: none; }
+
+.main-menu {
+  width: 100%; }
+  .main-menu, .main-menu ul {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none; }
+  .main-menu li {
+    position: relative;
+    list-style: none;
+    -webkit-flex: auto;
+    -ms-flex: auto;
+    flex: auto; }
+    .main-menu li.parent-submenu {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+      .main-menu li.parent-submenu a {
+        -webkit-flex: auto;
+        -ms-flex: auto;
+        flex: auto; }
+  .main-menu ul {
+    display: none; }
+    @media screen and (max-width: 639px) {
+      .main-menu ul.show-submenu {
+        display: block;
+        width: 100%;
+        -webkit-order: 3;
+        -ms-flex-order: 3;
+        order: 3;
+        margin-left: 1em;
+        margin-bottom: .5em; } }
+  .main-menu a {
+    display: block;
+    line-height: 3em;
+    padding: 0 1em; }
+    .main-menu a:hover {
+      text-decoration: none; }
+  @media screen and (min-width: 640px) {
+    .main-menu {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center; }
+      .main-menu a {
+        text-align: center; }
+      .main-menu .expand {
+        display: none; }
+      .main-menu ul {
+        position: absolute;
+        left: 0;
+        top: 100%;
+        min-width: 100%;
+        white-space: nowrap; }
+        .main-menu ul a {
+          text-align: left; }
+        .main-menu ul ul {
+          top: 0;
+          left: 100%; }
+      .main-menu li:hover > ul {
+        display: block; } }
+  .main-menu .expand-submenu {
+    position: relative;
+    right: 0;
+    width: 3em;
+    height: 3em;
+    cursor: pointer;
+    transition: all .3s; }
+    @media screen and (min-width: 640px) {
+      .main-menu .expand-submenu {
+        display: none; } }
+    .main-menu .expand-submenu::after {
+      content: "";
+      position: absolute;
+      width: 40%;
+      height: 40%;
+      top: 20%;
+      left: 30%;
+      border-left: 0.45em solid;
+      border-bottom: 0.45em solid;
+      border-radius: 0.24em;
+      -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      transition: all .3s; }
+    .main-menu .expand-submenu.active {
+      -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      transform: rotate(180deg); }
+
+@media screen and (max-width: 639px) {
+  .main-nav {
+    position: fixed;
+    transition: all .3s;
+    height: 100vh;
+    z-index: 200;
+    overflow-y: auto;
+    width: 85%;
+    left: -85%; }
+    .main-nav.show-menu {
+      left: 0; } }
+
+.sect-item-full {
+  width: 100%;
+  /*mobil,tablet,desktop*/ }
+
+.sect-item {
+  width: 100%;
+  /*mobil,tablet,desktop*/ }
+  @media screen and (min-width: 640px) {
+    .sect-item {
+      width:20%; } }
+
+.main-banner {
+  padding: 0;
+  display: block; }
+
+.cta-main {
+  margin: 20% 0 25% 0; }
+  @media screen and (max-width: 1023px) {
+    .cta-main {
+      margin: 35% 0 40% 0; } }
+  .cta-main h1 {
+    font-size: 4em; }
+    @media screen and (max-width: 639px) {
+      .cta-main h1 {
+        font-size: 2.3em; } }
+  .cta-main p {
+    font-size: 1.3em; }
+    @media screen and (max-width: 639px) {
+      .cta-main p {
+        font-size: 0.7em; } }
+
+.btn {
+  background: #ddd;
+  color: #333; }
+  .btn:hover {
+    background: #d0d0d0;
+    text-decoration: none; }
+  .btn:active {
+    -webkit-transform: scale(0.97);
+    -ms-transform: scale(0.97);
+    transform: scale(0.97); }
+
+.video-cont {
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative; }
+  .video-cont > iframe,
+  .video-cont > video,
+  .video-cont > .video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; }
+
+.main-header-logo {
+  width: 40%; }
+  @media screen and (min-width: 1024px) {
+    .main-header-logo {
+      width: 20%; } }
+
+.main-header-menu {
+  width: 60%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end; }
+  @media screen and (min-width: 1024px) {
+    .main-header-menu {
+      width: 80%; } }
+
+.main-menu {
+  width: 100%; }
+  .main-menu, .main-menu ul {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none; }
+  .main-menu li {
+    position: relative;
+    list-style: none;
+    -webkit-flex: auto;
+    -ms-flex: auto;
+    flex: auto; }
+    .main-menu li.parent-submenu {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+      .main-menu li.parent-submenu a {
+        -webkit-flex: auto;
+        -ms-flex: auto;
+        flex: auto; }
+  .main-menu ul {
+    display: none; }
+    @media screen and (max-width: 639px) {
+      .main-menu ul.show-submenu {
+        display: block;
+        width: 100%;
+        -webkit-order: 3;
+        -ms-flex-order: 3;
+        order: 3;
+        margin-left: 1em;
+        margin-bottom: .5em; } }
+  .main-menu a {
+    display: block;
+    line-height: 3em;
+    padding: 0 1em; }
+    .main-menu a:hover {
+      text-decoration: none; }
+  @media screen and (min-width: 640px) {
+    .main-menu {
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center; }
+      .main-menu a {
+        text-align: center; }
+      .main-menu .expand {
+        display: none; }
+      .main-menu ul {
+        position: absolute;
+        left: 0;
+        top: 100%;
+        min-width: 100%;
+        white-space: nowrap; }
+        .main-menu ul a {
+          text-align: left; }
+        .main-menu ul ul {
+          top: 0;
+          left: 100%; }
+      .main-menu li:hover > ul {
+        display: block; } }
+  .main-menu .expand-submenu {
+    position: relative;
+    right: 0;
+    width: 3em;
+    height: 3em;
+    cursor: pointer;
+    transition: all .3s; }
+    @media screen and (min-width: 640px) {
+      .main-menu .expand-submenu {
+        display: none; } }
+    .main-menu .expand-submenu::after {
+      content: "";
+      position: absolute;
+      width: 40%;
+      height: 40%;
+      top: 20%;
+      left: 30%;
+      border-left: 0.45em solid;
+      border-bottom: 0.45em solid;
+      border-radius: 0.24em;
+      -webkit-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      transition: all .3s; }
+    .main-menu .expand-submenu.active {
+      -webkit-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      transform: rotate(180deg); }
+
+@media screen and (max-width: 639px) {
+  .main-nav {
+    position: fixed;
+    transition: all .3s;
+    height: 100vh;
+    z-index: 200;
+    overflow-y: auto;
+    width: 85%;
+    left: -85%; }
+    .main-nav.show-menu {
+      left: 0; } }
+
+.nav-toggle {
+  position: relative;
+  z-index: 300;
+  width: 22.5px;
+  height: 15px;
+  box-shadow: 0 3px white inset;
+  cursor: pointer; }
+  .nav-toggle::after, .nav-toggle::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    bottom: 0; }
+  .nav-toggle::after {
+    bottom: 6px; }
+  @media screen and (min-width: 640px) {
+    .nav-toggle {
+      display: none; } }
+
+.main-footer {
+  margin-top: auto; }
+  body {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-height: 100vh; }
+/*helpers*/
+.p-b-40{padding-bottom: 40px !important}
+.p-t-20{padding-top: 20px}
